@@ -1,0 +1,2 @@
+LD_LIBRARY_PATH=/home1/09979/awikner/netcdf-4.2/lib:${LD_LIBRARY_PATH}
+g++ -I/opt/apps/intel24/netcdf/4.9.2/x86_64/include -I/home1/09979/awikner/netcdf-4.2/include -L/opt/apps/intel24/netcdf/4.9.2/x86_64/lib -L/home1/09979/awikner/netcdf-4.2/lib burn7.cpp -o burn7 -lm -lnetcdf_c++ -lnetcdf 

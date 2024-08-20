@@ -144,7 +144,7 @@ else
 fi
 
 #check for MPI-FORTRAN-90 compiler
-for MPI_F90 in openmpif90 mpif90 mpf90 mpxlf90 NO_F90
+for MPI_F90 in mpiifort openmpif90 mpif90 mpf90 mpxlf90 NO_F90
 do
    `hash 2>/dev/null $MPI_F90`
    if [ $? = 0 ] ; then break ; fi
@@ -172,7 +172,7 @@ fi
 
 #check for MPI-C compiler
 if [ $MPI_F90 != "NO_F90" ] ; then
-   for MPI_CC in openmpicc gxlc mpicc mpcc g++ gcc NO_CC
+   for MPI_CC in mpiicc openmpicc gxlc mpicc mpcc g++ gcc NO_CC
    do
       `hash 2>/dev/null $MPI_CC`
       if [ $? = 0 ] ; then break ; fi
@@ -191,7 +191,7 @@ fi
 
 #check for MPI-C++ compiler
 if [ $MPI_F90 != "NO_F90" ] ; then
-   for MPI_PP in openmpicxx mpicxx NO_PP
+   for MPI_PP in mpicxx openmpicxx mpicxx NO_PP
    do
       `hash 2>/dev/null $MPI_PP`
       if [ $? = 0 ] ; then break ; fi

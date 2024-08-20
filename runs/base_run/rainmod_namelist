@@ -1,0 +1,5 @@
+ &rainmod_nl
+ NCLOUDS     =     1
+ NSTORAIN    =     0
+ nshallow    =     1
+ /END

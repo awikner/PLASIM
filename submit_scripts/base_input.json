@@ -1,0 +1,12 @@
+{
+  "source": {
+    "id": "1e9ddd41-fe4b-406f-95ff-f3d79f9cb523",
+    "path": "%SOURCE%"
+  },
+  "destination": {
+    "id": "d33b3614-6d04-11e5-ba46-22000b92c6ec",
+    "path": "%TARGET%"
+  },
+  "transfer_label": "Transfer for Generic Move from Globus Tutorial Collection 1 to Globus Tutorial Collection 2",
+  "delete_label": "Delete after Transfer for Generic Move from Globus Tutorial Collection 1 to Globus Tutorial Collection 2"
+}

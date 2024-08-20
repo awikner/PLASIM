@@ -1,0 +1,6 @@
+ &oceanmod_nl
+ NOCEAN      =     0
+ NLSG        =     0
+ NHDIFF      =     0
+ HDIFFK      = 1.0e+05
+ /END

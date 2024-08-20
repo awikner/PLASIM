@@ -1,0 +1,6 @@
+VTYPE = S,
+HTYPE = Grid,
+MEAN=0,
+NetCDF=1,
+CODE=142,143,140
+#Does not include surface winds (165,166), deep soil wentness (171) 
