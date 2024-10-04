@@ -54,7 +54,7 @@ def move_procced_data(argv, remove_tmp_dirs = True, remove_unprocced_data = Fals
             for year in procced_years:
                 if os.path.isfile(os.path.join(datadir, folder, f'{year}_gaussian.nc')):
                     os.remove(os.path.join(datadir, folder, f'{year}_gaussian.nc'))
-    """
+    
     print(f'Moving {len(procced_years)} for Sim {sim}')
     proc_dir = os.path.join(base_dir, f'sim{sim}-proc-{start_year}-to-{end_year}')
     if not os.path.isdir(proc_dir):
@@ -68,7 +68,6 @@ def move_procced_data(argv, remove_tmp_dirs = True, remove_unprocced_data = Fals
         else:
             for file in [f'{year}_gaussian.nc' for year in procced_years]:
                 shutil.move(os.path.join(datadir, folder, file), os.path.join(proc_dir, folder, file))
-    """
     print('Moved files for Sim ' + str(sim))
     if start_flow:
         readlines = False

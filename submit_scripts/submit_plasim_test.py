@@ -12,9 +12,8 @@ def main(argv):
     base_run_dir = '/work2/09979/awikner/stampede3/PLASIM/runs/base_run'
     base_flow_json = '/work2/09979/awikner/stampede3/PLASIM/submit_scripts/base_input.json'
     base_job_script = '/work2/09979/awikner/stampede3/PLASIM/job_scripts/plasim_globus_base.sh'
-    use_icx = False
     try:
-        opts, args = getopt.getopt(argv,"n:t:r:j:s:e:i",[])
+        opts, args = getopt.getopt(argv,"n:t:r:s:",[])
     except getopt.GetoptError:
         print ('Some input arguments not recognized.')
         sys.exit(2)
@@ -25,14 +24,9 @@ def main(argv):
             target_dir = str(arg)
         elif opt == '-r':
             base_run_dir = str(arg)
-        elif opt == '-j':
-            base_job_script = str(arg)
         elif opt == '-s':
             simstep_start = int(arg)
-        elif opt == '-e':
-            simstep_end = int(arg)
-        elif opt == '-i':
-            use_icx = True
+            simstep_end = simstep_start + 1
     simnames = os.listdir(run_dir)
     datanames = os.listdir(data_dir)
     #if simname in simnames:
@@ -60,14 +54,14 @@ def main(argv):
         lines = file.readlines()
 
     new_flow_json_base = os.path.join(run_dir, simname, 'globus_input_%s_' % simname)
-    #new_flow_json = []
-    #for simstep in range(simstep_start+1, simstep_end+1):
-    #    new_flow_json.append('%s%03d.json' % (new_flow_json_base, simstep))
-    #    with open(new_flow_json[-1], 'w') as file:
-    #        for line in lines:
-    #            line = line.replace('%SOURCE%', os.path.join(data_dir, '%s-%03d' % (simname, simstep)))
-    #            line = line.replace('%TARGET%', target_dir)
-    #            file.write(line)
+    new_flow_json = []
+    for simstep in range(simstep_start+1, simstep_end+1):
+        new_flow_json.append('%s%03d.json' % (new_flow_json_base, simstep))
+        with open(new_flow_json[-1], 'w') as file:
+            for line in lines:
+                line = line.replace('%SOURCE%', os.path.join(data_dir, '%s-%03d' % (simname, simstep)))
+                line = line.replace('%TARGET%', target_dir)
+                file.write(line)
     
     with open(base_job_script) as file:
         lines = file.readlines()
@@ -85,10 +79,7 @@ def main(argv):
     submitted = False
     while not submitted:
         try:
-            if use_icx:
-                out = subprocess.check_output(['sbatch','-p', 'icx', '-N', '1', new_job_script])
-            else:
-                out = subprocess.check_output(['sbatch',new_job_script])
+            out = subprocess.check_output(['sbatch',new_job_script])
             submitted = True
             print(out)
         except:

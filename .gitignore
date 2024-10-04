@@ -1,0 +1,8 @@
+*.json
+*.out
+*.err
+*.nc
+*.sh
+data/
+runs/
+plasim/run_*

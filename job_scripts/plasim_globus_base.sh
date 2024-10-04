@@ -43,7 +43,7 @@ do
    INPUTFILE=`printf '%INPUTFILE%%03d.json' $YEAR`
    OUTPUTFILE=`printf 'info-%SIMNAME%-%03d.json' $YEAR`
    #globus flows start -v --label $LABEL --input $INPUTFILE 59d76fe6-f28d-48df-b913-d7dcb6465ab4 > $OUTPUTFILE
-   echo "globus flows start -v --label $LABEL --input $INPUTFILE 59d76fe6-f28d-48df-b913-d7dcb6465ab4 > $OUTPUTFILE"
+   #echo "globus flows start -v --label $LABEL --input $INPUTFILE 59d76fe6-f28d-48df-b913-d7dcb6465ab4 > $OUTPUTFILE"
 done
 echo "PLASIM run finished"
 
